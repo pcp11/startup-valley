@@ -16,5 +16,6 @@ class StartupController {
     private lateinit var repository: StartupRepository
 
     @GetMapping
-    fun findAll(): Flux<Startup> = repository.findAll()
+    fun findAll(@RequestParam(name = "page") page: Int,
+                @RequestParam(name = "size") size: Int): Flux<Startup> = repository.findAllByIdNotNullOrderByTotalFundsDesc(PageRequest.of(page, size))
 }
