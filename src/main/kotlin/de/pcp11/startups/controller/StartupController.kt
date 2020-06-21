@@ -3,13 +3,14 @@ package de.pcp11.startups.controller
 import de.pcp11.startups.model.Startup
 import de.pcp11.startups.repository.StartupRepository
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.data.domain.PageRequest
+import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
+
 
 @RestController
 @RequestMapping("/startups")
+@CrossOrigin("*")
 class StartupController {
 
     @Autowired
