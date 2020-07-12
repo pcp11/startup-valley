@@ -3,9 +3,8 @@ package de.pcp11.startups.controller
 import de.pcp11.startups.model.Startup
 import de.pcp11.startups.repository.StartupRepository
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.data.domain.PageRequest
 import org.springframework.web.bind.annotation.*
-import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 
 
 @RestController
@@ -18,5 +17,25 @@ class StartupController {
 
     @GetMapping
     fun findAll(@RequestParam(name = "page") page: Int,
-                @RequestParam(name = "size") size: Int): Flux<Startup> = repository.findAllByIdNotNullOrderByTotalFundsDesc(PageRequest.of(page, size))
+                @RequestParam(name = "size") size: Int): Mono<PageResponse> {
+        return repository.findByOrderByTotalFundsDesc()
+                .collectList()
+                .map { data ->
+                    PageResponse(
+                            data.asSequence()
+                                    .drop((page - 1) * size)
+                                    .take(size)
+                                    .toList(),
+                            page,
+                            size,
+                            data.size)
+                }
+    }
+
+    @GetMapping("/{id}")
+    fun findById(@PathVariable id: Long): Mono<Startup> {
+        return repository.findById(id)
+    }
 }
+
+class PageResponse(val data: List<Startup>, val page: Int, val size: Int, val totalResults: Int)
