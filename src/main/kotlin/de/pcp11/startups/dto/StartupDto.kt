@@ -21,13 +21,34 @@ class StartupDto {
     @CsvBindByName(column = "funding_total_usd")
     var totalFunds: String? = null
 
+    @CsvBindByName(column = "homepage_url")
+    var homepageUrl: String? = null
+
+    @CsvBindByName(column = "category_list")
+    var categories: String? = null
+
+    @CsvBindByName
+    var status: String? = null
+
     constructor()
-    constructor(id: Long?, name: String?, market: String?, countryCode: String?, totalFunds: String?) {
+    constructor(
+            id: Long?,
+            name: String?,
+            market: String?,
+            countryCode: String?,
+            totalFunds: String?,
+            homepageUrl: String?,
+            categories: String?,
+            status: String?
+    ) {
         this.id = id
         this.name = name
         this.market = market
         this.countryCode = countryCode
         this.totalFunds = totalFunds
+        this.homepageUrl = homepageUrl
+        this.categories = categories
+        this.status = status
     }
 
     override fun toString(): String {
@@ -40,7 +61,19 @@ class StartupDto {
         val market = this.market!!.trim()
         val countryCode = this.countryCode!!.trim()
         val totalFunds = this.convertFunds()
-        return Startup(id, name, market, countryCode, totalFunds)
+        val homepageUrl = this.homepageUrl!!
+        val categories = this.categories!!
+        val status = this.status!!
+
+        return Startup(
+                id = id,
+                name = name,
+                market = market,
+                countryCode = countryCode,
+                totalFunds = totalFunds,
+                homepageUrl = homepageUrl,
+                categories = categories,
+                status = status)
     }
 
     private fun convertFunds(): Long {

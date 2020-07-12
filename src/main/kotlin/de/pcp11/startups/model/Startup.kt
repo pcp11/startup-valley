@@ -10,5 +10,8 @@ data class Startup(
         val name: String,
         val market: String,
         val countryCode: String,
-        val totalFunds: Long
+        val totalFunds: Long,
+        val homepageUrl: String,
+        val categories: String,
+        val status: String
 )
