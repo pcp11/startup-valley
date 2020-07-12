@@ -10,7 +10,5 @@ import reactor.core.publisher.Flux
 @Repository
 interface StartupRepository : ReactiveSortingRepository<Startup, Long> {
 
-    fun findAllByIdNotNullOrderByTotalFundsDesc(page: Pageable): Flux<Startup>
-
     fun findByOrderByTotalFundsDesc(): Flux<Startup>
 }

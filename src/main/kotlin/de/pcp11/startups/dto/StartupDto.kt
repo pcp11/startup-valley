@@ -1,9 +1,9 @@
 package de.pcp11.startups.dto
 
 import com.opencsv.bean.CsvBindByName
+import de.pcp11.startups.model.FundingDetails
 import de.pcp11.startups.model.Startup
 import java.time.LocalDate
-import kotlin.math.round
 
 
 class StartupDto {
@@ -239,38 +239,41 @@ class StartupDto {
                 id = id,
                 name = name,
                 market = market,
+                totalFunds = totalFunds,
                 countryCode = countryCode,
                 stateCode = stateCode,
                 region = region,
                 city = city,
-                totalFunds = totalFunds,
-                fundingRounds = fundingRounds,
                 homepageUrl = homepageUrl,
                 categories = categories,
                 status = status,
                 foundedAt = convertToLocalDate(foundedAt),
+                fundingRounds = fundingRounds,
                 firstFoundingAt = convertToLocalDate(firstFoundingAt),
                 lastFoundingAt = convertToLocalDate(lastFoundingAt),
-                seed = seed,
-                venture = venture,
-                equityCrowdFunding = equityCrowdFunding,
-                undisclosed = undisclosed,
-                convertibleNote = convertibleNote,
-                debtFinancing = debtFinancing,
-                angel = angel,
-                grant = grant,
-                privateEquity = privateEquity,
-                postIpoEquity = postIpoEquity,
-                postIpoDebt = postIpoDebt,
-                secondaryMarket = secondaryMarket,
-                productCrowdFunding = productCrowdFunding,
-                roundA = roundA,
-                roundB = roundB,
-                roundC = roundC,
-                roundD = roundD,
-                roundE = roundE,
-                roundF = roundF,
-                roundH = roundH
+                fundingDetails = FundingDetails(
+                        seed = seed,
+                        venture = venture,
+                        equityCrowdFunding = equityCrowdFunding,
+                        undisclosed = undisclosed,
+                        convertibleNote = convertibleNote,
+                        debtFinancing = debtFinancing,
+                        angel = angel,
+                        grant = grant,
+                        privateEquity = privateEquity,
+                        postIpoEquity = postIpoEquity,
+                        postIpoDebt = postIpoDebt,
+                        secondaryMarket = secondaryMarket,
+                        productCrowdFunding = productCrowdFunding,
+                        roundA = roundA,
+                        roundB = roundB,
+                        roundC = roundC,
+                        roundD = roundD,
+                        roundE = roundE,
+                        roundF = roundF,
+                        roundG = roundG,
+                        roundH = roundH
+                )
         )
     }
 
