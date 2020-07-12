@@ -39,7 +39,7 @@ class Application : CommandLineRunner {
             startup.id = id.toLong()
             repository.save(startup.convert()).block()
         }
-        println(repository.count().block())
+        LOG.info("StartUps imported: " + repository.count().block())
     }
 }
 
