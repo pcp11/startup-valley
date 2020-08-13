@@ -23,23 +23,23 @@ class Application : CommandLineRunner {
     private lateinit var repository: StartupRepository
 
     override fun run(vararg args: String) {
-        repository.deleteAll()
-
-        if (args.isEmpty()) {
-            LOG.info("Usage: ApplicationKt file_path.csv")
-            return
-        }
-        val filePath: String = args[0]
-        val file = File(filePath)
-        val startupList: MutableList<StartupDto> = CSVParser().parse(file)
-
-        // call your function here
-        (1..startupList.size).forEach { id ->
-            val startup = startupList[id - 1]
-            startup.id = id.toLong()
-            repository.save(startup.convert()).block()
-        }
-        LOG.info("StartUps imported: " + repository.count().block())
+//        repository.deleteAll()
+//
+//        if (args.isEmpty()) {
+//            LOG.info("Usage: ApplicationKt file_path.csv")
+//            return
+//        }
+//        val filePath: String = args[0]
+//        val file = File(filePath)
+//        val startupList: MutableList<StartupDto> = CSVParser().parse(file)
+//
+//        // call your function here
+//        (1..startupList.size).forEach { id ->
+//            val startup = startupList[id - 1]
+//            startup.id = id.toLong()
+//            repository.save(startup.convert()).block()
+//        }
+//        LOG.info("StartUps imported: " + repository.count().block())
     }
 }
 
