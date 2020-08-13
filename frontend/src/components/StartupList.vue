@@ -48,8 +48,9 @@
         </div>
     </div>
 </template>
+
 <script>
-    import {groupBy, formatToUSD} from "@/utils";
+    import {groupByNum, formatToUSD} from "@/utils";
     import Paginate from "vuejs-paginate";
 
     export default {
@@ -65,7 +66,7 @@
         },
         computed: {
             calcStartupList() {
-                return groupBy(this.startups, 2);
+                return groupByNum(this.startups, 2);
             }
         },
         methods: {
@@ -83,6 +84,7 @@
         }
     };
 </script>
+
 <style scoped>
     .search_pair_column {
         margin: 0;

@@ -151,6 +151,7 @@
         </div>
     </div>
 </template>
+
 <script>
     import {formatToUSD} from "@/utils";
 
