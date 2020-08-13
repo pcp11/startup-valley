@@ -16,8 +16,8 @@ class StartupController {
     private lateinit var repository: StartupRepository
 
     @GetMapping
-    fun findAll(@RequestParam(name = "page") page: Int,
-                @RequestParam(name = "size") size: Int): Mono<PageResponse> {
+    fun findAll(@RequestParam(name = "page", defaultValue = "1") page: Int,
+                @RequestParam(name = "size", defaultValue = "50") size: Int): Mono<PageResponse> {
         return repository.findByOrderByTotalFundsDesc()
                 .collectList()
                 .map { data ->
