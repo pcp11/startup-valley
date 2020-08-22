@@ -48,7 +48,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <nodeVersion>v10.19.0</nodeVersion>
+                    <nodeVersion>v12.18.2</nodeVersion>
                     <yarnVersion>v1.21.1</yarnVersion>
                     <workingDirectory>frontend</workingDirectory>
                 </configuration>
