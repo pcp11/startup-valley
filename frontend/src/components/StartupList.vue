@@ -1,9 +1,9 @@
 <template>
-    <div class="container">
-        <div class="row search_result_row"
-             v-for="startupPair in calcStartupList"
-             :key="calcGroupArrayId(startupPair)">
-            <div class="row col-xl-6 search_pair_column" v-for="startup in startupPair" :key="startup.id">
+    <div class="container-fluid" style="max-width: 1824px;">
+        <div class="row">
+            <div class="col-lg-4 col-md-6"
+                 v-for="startup in this.startups"
+                 :key="startup.id">
                 <div class="col mt-5">
                     <router-link :to="{name: 'startupDetail', params: {id: startup.id}}">
                         <div class="card" style="width: 100%;">
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-    import {groupByNum, formatToUSD} from "@/utils";
+    import {formatToUSD} from "@/utils";
     import Paginate from "vuejs-paginate";
 
     export default {
@@ -64,15 +64,7 @@
             totalPages: Number,
             selectedPage: Number
         },
-        computed: {
-            calcStartupList() {
-                return groupByNum(this.startups, 2);
-            }
-        },
         methods: {
-            calcGroupArrayId(arr) {
-                return arr.reduce((str, val) => str + val.id + "-", "");
-            },
             formatToUSD(val) {
                 return formatToUSD(val);
             },
@@ -84,12 +76,3 @@
         }
     };
 </script>
-
-<style scoped>
-    .search_pair_column {
-        margin: 0;
-        padding: 0;
-        padding-right: 15px;
-        padding-left: 15px;
-    }
-</style>

@@ -18,12 +18,3 @@ export const myFetch = async (url, options = {}) => {
         return {data: null, error};
     }
 };
-
-export const groupByNum = (arr, num) => arr.reduce((numArr, val, idx) => {
-    if (idx % num === 0) {
-        numArr.push([]);
-    }
-    numArr[numArr.length - 1].push(val);
-    return numArr;
-}, []);
-
