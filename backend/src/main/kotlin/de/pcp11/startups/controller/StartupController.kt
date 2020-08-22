@@ -31,7 +31,7 @@ class StartupController {
                 }
     }
 
-    @GetMapping("/startups/{id}")
+    @GetMapping("/startup/{id}")
     fun findById(@PathVariable id: Long): Mono<Startup> {
         return repository.findById(id)
     }
