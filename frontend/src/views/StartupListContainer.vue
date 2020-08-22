@@ -11,7 +11,7 @@
 
 <script>
     import StartupList from "@/components/StartupList.vue";
-    import {myFetch} from "@/utils";
+    import {getStartups} from "@/utils";
     import config from "@/config";
 
     export default {
@@ -55,9 +55,7 @@
 
                 const params = {...this.$route.query, page, size};
 
-                const {data, error} = await myFetch(
-                    `${config.ENDPOINT}/startups?${new URLSearchParams(params).toString()}`
-                );
+                const {data, error} = await getStartups({params: params});
                 this.data = data;
                 this.error = error;
                 this.loading = false;

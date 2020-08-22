@@ -4,8 +4,7 @@
 
 <script>
     import StartupDetail from "@/components/StartupDetail.vue";
-    import {myFetch} from "@/utils";
-    import config from "@/config";
+    import {getStartupById} from "@/utils";
 
     export default {
         name: "StartupDetailContainer",
@@ -32,9 +31,7 @@
                 const startupId = this.$route.params.id;
                 this.loading = true;
 
-                const {data, error} = await myFetch(
-                    `${config.ENDPOINT}/startups/${startupId}`
-                );
+                const {data, error} = await getStartupById(startupId);
                 this.data = data;
                 this.error = error;
                 this.loading = false;
