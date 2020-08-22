@@ -1,5 +1,6 @@
 package de.pcp11.startups
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties
 import de.pcp11.startups.dto.StartupDto
 import de.pcp11.startups.parser.CSVParser
 import de.pcp11.startups.repository.StartupRepository
@@ -13,6 +14,7 @@ import java.io.File
 
 
 @SpringBootApplication
+@EnableEncryptableProperties
 class Application : CommandLineRunner {
 
     companion object {

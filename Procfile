@@ -1,1 +1,1 @@
-web: java -jar -Dspring.profiles.active=heroku backend/target/backend-0.0.1-SNAPSHOT.jar src/main/resources/investments_VC.csv
+web: java -jar -Dspring.profiles.active=heroku -Djasypt.encryptor.password=$SECRET_KEY backend/target/backend-0.0.1-SNAPSHOT.jar src/main/resources/investments_VC.csv
