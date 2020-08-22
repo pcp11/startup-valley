@@ -1,5 +1,5 @@
 const configs = {
-    ENDPOINT: "http://localhost:8080",
+    ENDPOINT: "/api",
     NUM_OF_ROWS: 100
 };
 
