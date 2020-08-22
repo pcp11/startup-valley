@@ -8,14 +8,13 @@ import reactor.core.publisher.Mono
 
 
 @RestController
-@RequestMapping("/startups")
-@CrossOrigin("*")
+@RequestMapping("/api")
 class StartupController {
 
     @Autowired
     private lateinit var repository: StartupRepository
 
-    @GetMapping
+    @GetMapping("/startups")
     fun findAll(@RequestParam(name = "page", defaultValue = "1") page: Int,
                 @RequestParam(name = "size", defaultValue = "50") size: Int): Mono<PageResponse> {
         return repository.findByOrderByTotalFundsDesc()
@@ -32,7 +31,7 @@ class StartupController {
                 }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/startups/{id}")
     fun findById(@PathVariable id: Long): Mono<Startup> {
         return repository.findById(id)
     }
