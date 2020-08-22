@@ -10,7 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.context.annotation.Bean
+import org.springframework.web.reactive.function.server.RouterFunction
+import org.springframework.web.reactive.function.server.ServerResponse
+import org.springframework.web.reactive.function.server.router
 import java.io.File
+import java.net.URI
 
 
 @SpringBootApplication
@@ -43,8 +48,20 @@ class Application : CommandLineRunner {
 //        }
 //        LOG.info("StartUps imported: " + repository.count().block())
     }
+
+    @Bean
+    fun indexRouter(): RouterFunction<ServerResponse> {
+        val redirectToIndex = ServerResponse.temporaryRedirect(URI("/index.html")).build()
+
+        return router {
+            GET("/") {
+                redirectToIndex
+            }
+        }
+    }
 }
 
 fun main(args: Array<String>) {
     runApplication<Application>(*args)
 }
+
