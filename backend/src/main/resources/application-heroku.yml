@@ -1,4 +1,5 @@
 server.port: ${PORT:8098}
+spring.data.mongodb.auto-index-creation: true
 spring.data.mongodb.uri: ENC(xCquDE5T5gVGshixlx3Pz6ptaI1ClNVnNjSa1N+ooZi/DEJj/IJhCMX/Co+GdN+0yI1lT/ZDgLShP2e9fojzcb54ybo32f+9c2RQgooVf4tpvArRb0P7+1mBQVUwmLYLA9EWE4a3+sc=)
 spring.data.mongodb.database: StartupDB
 spring.autoconfigure.exclude: org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration
