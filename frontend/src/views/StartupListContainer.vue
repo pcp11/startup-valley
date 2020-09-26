@@ -11,7 +11,7 @@
 
 <script>
     import StartupList from "@/components/StartupList.vue";
-    import {getStartups} from "@/utils";
+    import {getStartups} from "@/backend";
     import config from "@/config";
 
     export default {

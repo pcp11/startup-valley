@@ -4,7 +4,7 @@
 
 <script>
     import StartupDetail from "@/components/StartupDetail.vue";
-    import {getStartupById} from "@/utils";
+    import {getStartupById} from "@/backend";
 
     export default {
         name: "StartupDetailContainer",
