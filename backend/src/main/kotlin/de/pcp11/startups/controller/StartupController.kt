@@ -22,17 +22,11 @@ class StartupController {
     fun findAll(@RequestParam(name = "page", defaultValue = "1") page: Int,
                 @RequestParam(name = "size", defaultValue = "50") size: Int): Mono<PageResponse> {
         return repository.findByOrderByTotalFundsDesc()
+                .skip((page - 1) * size.toLong())
+                .take(size.toLong())
                 .collectList()
-                .map { data ->
-                    PageResponse(
-                            data.asSequence()
-                                    .drop((page - 1) * size)
-                                    .take(size)
-                                    .toList(),
-                            page,
-                            size,
-                            data.size)
-                }
+                .zipWith(repository.count())
+                .map { PageResponse(it.t1, page, size, it.t2) }
     }
 
     @GetMapping("/startup/{id}")
@@ -54,4 +48,4 @@ class StartupController {
     }
 }
 
-class PageResponse(val data: List<Startup>, val page: Int, val size: Int, val totalResults: Int)
+class PageResponse(val data: List<Startup>, val page: Int, val size: Int, val totalResults: Long)
