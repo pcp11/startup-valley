@@ -49,7 +49,6 @@ class Application : CommandLineRunner {
         val file = File(filePath)
         val startupList: MutableList<StartupDto> = CSVParser().parse(file)
 
-        // call your function here
         (1..startupList.size).forEach { id ->
             val startup = startupList[id - 1]
             startup.id = id.toLong()
