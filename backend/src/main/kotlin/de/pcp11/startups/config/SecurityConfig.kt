@@ -60,6 +60,7 @@ class SecurityConfig {
                 .accessDeniedHandler { swe, _ -> { swe.response.setStatusCode(HttpStatus.FORBIDDEN) }.toMono().then() }
                 .and()
                 .authorizeExchange { exchanges ->
+                    exchanges.pathMatchers("/").permitAll()
                     exchanges.pathMatchers("/api/startups").permitAll()
                     exchanges.pathMatchers("/api/startup/**").permitAll()
                     exchanges.pathMatchers("/api/secured/**").authenticated()
