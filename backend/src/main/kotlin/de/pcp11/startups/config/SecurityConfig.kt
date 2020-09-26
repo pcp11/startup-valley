@@ -61,7 +61,6 @@ class SecurityConfig {
                 .and()
                 .authorizeExchange { exchanges ->
                     exchanges.pathMatchers("/", "/index.html", "/static/**").permitAll()
-                    exchanges.pathMatchers("/login", "/register").permitAll()
                     exchanges.pathMatchers("/api/startups").permitAll()
                     exchanges.pathMatchers("/api/startup/**").permitAll()
                     exchanges.pathMatchers("/api/secured/**").authenticated()
