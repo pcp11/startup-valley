@@ -39,12 +39,12 @@ class Application : CommandLineRunner {
             LOG.info("No StartUps imported for heroku env.")
             return
         }
-        repository.deleteAll()
-
         if (args.isEmpty()) {
             LOG.info("Usage: ApplicationKt file_path.csv")
             return
         }
+        repository.deleteAll()
+
         val filePath: String = args[0]
         val file = File(filePath)
         val startupList: MutableList<StartupDto> = CSVParser().parse(file)
