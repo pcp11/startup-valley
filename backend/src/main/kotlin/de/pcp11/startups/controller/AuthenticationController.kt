@@ -25,7 +25,19 @@ class AuthenticationController {
         return repository.existsById(user.name)
                 .filter { !it }
                 .flatMap { repository.save(user) }
-                .map { ResponseEntity.status(HttpStatus.CREATED).build<Void>() }
+                .map {
+                    val jwt = jwtUtil.createJwt(it.name)
+                    val authCookie = ResponseCookie.fromClientResponse("X-Auth", jwt)
+                            .maxAge(3600)
+                            .httpOnly(true)
+                            .path("/")
+                            .secure(false)
+                            .build()
+
+                    ResponseEntity.status(HttpStatus.CREATED)
+                            .header("Set-Cookie", authCookie.toString())
+                            .build<Void>()
+                }
                 .switchIfEmpty(Mono.just(ResponseEntity.status(HttpStatus.CONFLICT).build<Void>()))
     }
 
