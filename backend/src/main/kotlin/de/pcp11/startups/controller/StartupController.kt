@@ -5,6 +5,8 @@ import de.pcp11.startups.repository.StartupRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Mono
+import java.math.BigInteger
+import java.security.SecureRandom
 
 
 @RestController
@@ -13,6 +15,8 @@ class StartupController {
 
     @Autowired
     private lateinit var repository: StartupRepository
+
+    private val secret = generateRandomHexToken()
 
     @GetMapping("/startups")
     fun findAll(@RequestParam(name = "page", defaultValue = "1") page: Int,
@@ -34,6 +38,19 @@ class StartupController {
     @GetMapping("/startup/{id}")
     fun findById(@PathVariable id: Long): Mono<Startup> {
         return repository.findById(id)
+    }
+
+    @GetMapping("/secured")
+    fun secured(): Mono<String> {
+        return Mono.just(secret)
+    }
+
+    private final fun generateRandomHexToken(): String {
+        val secureRandom = SecureRandom()
+        val token = ByteArray(16)
+        secureRandom.nextBytes(token)
+
+        return BigInteger(1, token).toString(16) //hex encoding
     }
 }
 
