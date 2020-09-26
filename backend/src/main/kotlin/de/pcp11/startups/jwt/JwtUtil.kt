@@ -14,7 +14,7 @@ import java.util.*
 @Service
 class JwtUtil {
 
-    val keyPair: KeyPair = Keys.keyPairFor(SignatureAlgorithm.RS256)
+    private val keyPair: KeyPair = Keys.keyPairFor(SignatureAlgorithm.RS256)
 
     fun createJwt(userId: String): String {
         return Jwts.builder()
