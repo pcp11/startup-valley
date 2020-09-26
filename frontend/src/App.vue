@@ -2,7 +2,13 @@
     <div id="app">
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand ml-5" href="/">Startup-Valley</a>
+                <router-link
+                        class="navbar-brand ml-5"
+                        active-class="active"
+                        exact
+                        :to="{ name: 'startups' }">
+                    Startup-Valley
+                </router-link>
                 <button class="navbar-toggler"
                         type="button"
                         data-toggle="collapse"
@@ -15,15 +21,33 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/secure">Secure</a>
+                            <router-link
+                                    class="nav-link"
+                                    active-class="active"
+                                    exact
+                                    :to="{ name: 'secure' }">
+                                Secure
+                            </router-link>
                         </li>
                     </ul>
                     <ul class="navbar-nav mr-5">
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">Log in</a>
+                            <router-link
+                                    class="nav-link"
+                                    active-class="active"
+                                    exact
+                                    :to="{ name: 'login' }">
+                                Log in
+                            </router-link>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/register">Sign up</a>
+                            <router-link
+                                    class="nav-link text-dark"
+                                    active-class="active"
+                                    exact
+                                    :to="{ name: 'register' }">
+                                Sign up
+                            </router-link>
                         </li>
                     </ul>
                 </div>
