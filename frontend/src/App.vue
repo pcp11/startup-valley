@@ -2,7 +2,7 @@
     <div id="app">
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="/">Startup-Valley</a>
+                <a class="navbar-brand ml-5" href="/">Startup-Valley</a>
                 <button class="navbar-toggler"
                         type="button"
                         data-toggle="collapse"
@@ -12,6 +12,21 @@
                         aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/secure">Secure</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mr-5">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Log in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/register">Sign up</a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         </header>
         <router-view/>
@@ -21,6 +36,7 @@
 <script>
     export default {
         name: "App",
-        components: {}
+        components: {},
+        methods: {}
     }
 </script>
